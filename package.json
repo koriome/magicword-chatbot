@@ -1,0 +1,26 @@
+{
+    "name": "magicwordbot",
+    "version": "0.0.1",
+    "description": "a chatbot that determines if chat has said a secret word.",
+    "main": "bot.js",
+    "scripts": {
+      "start": "node bot.js"
+    },
+    "dependencies": {
+      "express": "^4.16.4",
+      "tmi.js": "^1.2.1"
+    },
+    "engines": {
+      "node": "8.x"
+    },
+    "repository": {
+      "url": "https://korio.me"
+    },
+    "license": "MIT",
+    "keywords": [
+      "twitch",
+      "chatbots",
+      "irc"
+    ]
+  }
+  
