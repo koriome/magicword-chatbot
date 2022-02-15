@@ -1,0 +1,7 @@
+[12:50] info: Connecting to irc-ws.chat.twitch.tv on port 443..
+[12:50] info: Sending authentication to server..
+[12:50] info: Connected to server.
+* Connected to irc-ws.chat.twitch.tv:443
+[12:50] info: Executing command: JOIN #koriome
+[12:50] info: Joined #koriome
+[12:50] info: [#koriome] <koriome>: this is so fucked
