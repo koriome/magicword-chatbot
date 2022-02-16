@@ -1,4 +1,5 @@
 const tmi = require('tmi.js');
+require('dotenv').config();
 
 // connect to twitch irc
 const client = new tmi.Client({
@@ -8,10 +9,10 @@ const client = new tmi.Client({
     reconnect: true
   },
   identity: {
-    username: 'straydavi',
-    password: 'oauth:fuckyou'
+    username: process.env.BOT_NICK,
+    password: process.env.TMI_TOKEN
   },
-  channels: ['koriome']
+  channels: [process.env.CHANNEL]
 });
 
 // Register our event handlers (defined below)
@@ -27,11 +28,11 @@ function onMessageHandler (target, context, msg, self) {
 
 
   // If the command is known, let's execute it
-  if (msg.inclues('swag')) {
-    client.say(target `has said the word. your time has come. @koriome`);
-    console.log(`* THE WORD HATH BEEN SAID = ${commandName}`);
+  if (msg.includes(process.env.WORD)) {
+    client.say(target, `someone has said the word. your time has come. @koriome`);
+    console.log(`* THE WORD HATH BEEN SAID = ${msg}`);
   } else {
-    console.log(`* NO WORD = ${commandName}`);
+    console.log(`* NO WORD = ${msg}`);
   }
 }
 
@@ -39,13 +40,3 @@ function onMessageHandler (target, context, msg, self) {
 function onConnectedHandler (addr, port) {
   console.log(`* Connected to ${addr}:${port}`);
 }
-
-var fs = require('fs');
-var util = require('util');
-var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'w'});
-var log_stdout = process.stdout;
-
-console.log = function(d) { //
-  log_file.write(util.format(d) + '\n');
-  log_stdout.write(util.format(d) + '\n');
-};
